@@ -1,0 +1,285 @@
+.payment-form {
+    .input-row {
+        margin: 1em auto;
+    }
+
+    .legal-text {
+        color: rgba(0, 0, 0, 0.4);
+        font-size: 13px;
+        line-height: 17px;
+        margin-top: 12px
+    }
+}
+
+.btn-disable {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    background-image: none !important;
+}
+
+
+.form-cont {
+    width: 40%;
+    margin: auto auto 7em auto;
+    position: relative;
+    display: block;
+
+    @include media("<500px") {
+        width: 80%;
+
+        .under-form-msg {
+            width: 80%;
+        }
+    }
+
+    .form-wrapper {
+        position: relative;
+        display: block;
+        width: auto;
+        margin: auto;
+
+        @include media("<=phone") {
+            width: 90%;
+        }
+    }
+
+    .info-cont {
+        p {
+            text-align: left;
+        }
+    }
+}
+
+
+
+.form-input-row {
+    margin: 1em 0;
+    display: block;
+    position: relative;
+    overflow: auto;
+
+    label:not(.upload-btn),
+    select {
+        display: block;
+        position: relative;
+        float: left;
+    }
+
+    select,
+    input:not([type="submit"]),
+    textarea {
+        border-radius: $border-radius;
+    }
+
+    input:not([type="submit"]),
+    textarea {
+        width: 90%;
+        float: left;
+    }
+
+    select {
+        width: 95%;
+    }
+
+    small {
+        float: right;
+    }
+}
+
+
+option:disabled{
+    display: none;
+}
+
+.msg-box {
+    height: auto;
+    width: 100%;
+    display: block;
+    padding: 1em;
+    line-height: 30px;
+    text-align: center;
+    border-radius: $border-radius;
+    color: #fff;
+
+    a {
+        color: #ddd;
+    }
+}
+
+.success {
+    background-color: $success-green;
+}
+
+.failure {
+    background-color: $red-color;
+}
+
+input:not([type="submit"]),
+textarea,
+select {
+    padding: 4px 11px;
+    border-radius: 3px;
+    font-size: 18px;
+    width: 100%;
+    margin-top: 8px;
+    color: #333;
+    border: 1px solid #ccc;
+    min-height: 38px;
+    outline: none;
+    resize: none;
+
+    &:focus {
+        border: 1px solid #5faaf4;
+    }
+
+    &::placeholder {
+        color: #cbd5e0;
+    }
+}
+
+textarea {
+    font-family: $main-font;
+}
+
+input[type=file] {
+    border: 1px solid transparent !important;
+}
+
+textarea {
+    height: 100px;
+}
+
+
+.button-standard {
+    background-image: $btn-gradient;
+    color: #fff;
+    cursor: pointer;
+    border-radius: $border-radius;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 13px;
+    padding: 15px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    height: 42px;
+    margin: 5px auto;
+    outline: none;
+    text-decoration: none;
+
+    &:hover {
+        background-image: linear-gradient(to right, #5faaf4, #2a80d6) !important;
+    }
+
+    svg {
+        fill: #fff;
+        height: 13px;
+        line-height: 13px;
+        margin-left: 4px;
+        vertical-align: bottom;
+        width: 13px
+    }
+
+    &:disabled {
+        cursor: default !important;
+        background-image: none !important;
+        background-color: #ddd !important;
+        pointer-events: none !important;
+
+        &:hover {
+            background-image: none;
+        }
+    }
+}
+
+
+.input-search {
+    input {
+        &:focus {
+            border: none;
+        }
+    }
+}
+
+.button-order {
+    background-image: linear-gradient(to right, #75c275, #26ae60);
+    width: 100%;
+
+    &:hover {
+        background-image: linear-gradient(to right, #75d69d, #26ae60) !important;
+    }
+}
+
+
+.under-form-msg {
+    width: 500px;
+    text-align: left;
+    margin: 2em auto 0 auto;
+
+    @include media("<=phone") {
+        width: 90%;
+    }
+}
+
+
+@include media("<desktop") {
+    .change-box-btn,
+    .button-standard {
+        width: 100%;
+    }
+
+    .cancel-btn {
+        margin-left: 0 !important;
+    }
+}
+
+
+.register-success-msg {
+    a {
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+}
+
+
+.profile-img-cont {
+    text-align: center !important;
+    width: 100% !important;
+
+    label {
+        width: 100%;
+        display: block;
+    }
+
+    img {
+        margin: auto;
+        height: 100px;
+        width: 100px;
+        object-fit: cover;
+    }
+}
+
+.file-input {
+    margin-top: 0 !important;
+
+    .upload-btn {
+        width: 90%;
+        height: auto !important;
+        display: block;
+        position: relative;
+        margin: 0 !important;
+        padding: 13px !important;
+        background-image: linear-gradient(to right, #5faaf4, #2a80d6) !important;
+
+        &:hover {
+            background-image: linear-gradient(to right, #3faaf4, #4a80d6) !important;
+        }
+    }
+}
+
+.button-form {
+    width: 95% !important;
+    margin: 0 !important;
+    float: left !important
+}

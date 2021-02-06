@@ -1,0 +1,76 @@
+@import '/fonts.scss';
+@import '/variables.scss';
+@import '/responsive/breakpoints.scss';
+@import '/header.scss';
+@import '/home.scss';
+@import '/register.scss';
+@import '/profile.scss';
+@import '/footer.scss';
+
+
+body {
+    margin: 0;
+    font-family: $main-font;
+}
+
+.App {
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+main {
+    min-height: 400px;
+    width: 100%;
+    margin: auto;
+    display: block;
+    position: relative;
+}
+
+.video-cont {
+    display: block;
+    position: relative;
+    width: 50%;
+    margin: auto;
+
+    video {
+        width: 80%;
+    }
+}
+
+.btn-standard {
+    width: auto !important;
+    padding: 0.4em 2.2em !important;
+    margin: 1em;
+    border: 1px solid #fff;
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.2rem;
+    width: 25%;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+
+    a {
+        text-decoration: none !important;
+    }
+
+    @include media("<665px") {
+        width: 35%;
+    }
+
+    @include media("<500px") {
+        width: 80%;
+        margin: 0.5em auto;
+    }
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+}
