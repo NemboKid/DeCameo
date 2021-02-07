@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import getWeb3 from "./../web3/getWeb3";
 import Connect from "./Connect";
-import VideoContract from "./../contracts/VideoContract.json";
+// import VideoContract from "./../contracts/VideoContract.json";
 
+
+let VideoContract;
 
 const Profile = (props) => {
     let location = useLocation();

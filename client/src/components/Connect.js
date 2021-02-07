@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 //import Web3 from "web3";
-import VideoContract from "./../contracts/VideoContract.json";
+// import VideoContract from "./../contracts/VideoContract.json";
 import getWeb3 from "./../web3/getWeb3";
+
+let VideoContract;
 
 const Connect = (props) => {
   // // state = { storageValue: 0, web3: null, accounts: null, contract: null };

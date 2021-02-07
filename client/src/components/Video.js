@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 //import Web3 from "web3";
-import VideoContract from "./../contracts/VideoContract.json";
+// import VideoContract from "./../contracts/VideoContract.json";
+
 import getWeb3 from "./../web3/getWeb3";
 
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
 
+let VideoContract;
 
 const Video = () => {
     const [appState, setAppState] = useState({
@@ -59,13 +61,6 @@ const Video = () => {
         }
     }
 
-    // const readString = async () => {
-    //     const response = await appState.contract.methods.myString().call();
-    //     setAppState(prevState => {
-    //         return { ...prevState, contractString: response }
-    //     });
-    //     alert(`Contract string is: ${response}`);
-    // }
 
     const setFile = async (e) => {
         e.preventDefault();
