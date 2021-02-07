@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 //import Web3 from "web3";
-import DVideo from "./../contracts/DVideo.json";
+import VideoContract from "./../contracts/VideoContract.json";
 import getWeb3 from "./../web3/getWeb3";
 
 const ipfsClient = require('ipfs-http-client')
@@ -37,11 +37,11 @@ const Video = () => {
 
           // Get the contract instance.
           const networkId = await web3.eth.net.getId();
-          const deployedNetwork = await DVideo.networks[networkId];
+          const deployedNetwork = await VideoContract.networks[networkId];
 
           //load in the contract
           const instance = await new web3.eth.Contract(
-            DVideo.abi,
+            VideoContract.abi,
             deployedNetwork && deployedNetwork.address //only if deployedNetwork exists
           );
           setAppState(prevState => {

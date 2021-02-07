@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import getWeb3 from "./../web3/getWeb3";
+import Connect from "./Connect";
+import VideoContract from "./../contracts/VideoContract.json";
 
 
 const Profile = (props) => {
@@ -9,11 +12,51 @@ const Profile = (props) => {
     const [loadSkeleton, setLoadSkeleton] = useState(false);
     const [open, setOpen] = useState(false);
     const [profile, setProfile] = useState(null);
+    const [appState, setAppState] = useState({
+        contractString: "",
+        web3: {},
+        accounts: {},
+        contract: {},
+    });
 
     useEffect(() => {
         const {profile} = props.location.state;
         setProfile(profile);
+        initSetup();
     }, []);
+
+    const initSetup = async () => {
+        try {
+          // Get network provider and web3 instance.
+          const web3 = await getWeb3();
+          // console.log("get web3: ", web3);
+
+          // Use web3 to get the user's accounts.
+          const accounts = await web3.eth.getAccounts();
+
+          // Get the contract instance.
+          const networkId = await web3.eth.net.getId();
+          const deployedNetwork = await VideoContract.networks[networkId];
+
+          //load in the contract
+          const instance = await new web3.eth.Contract(
+            VideoContract.abi,
+            deployedNetwork && deployedNetwork.address //only if deployedNetwork exists
+          );
+          setAppState(prevState => {
+              return { ...prevState,
+                web3: web3,
+                accounts: accounts,
+                contract: instance
+              }
+          });
+          console.log("finished web3");
+        } catch (err) {
+            // Catch any errors for any of the above operations.
+            console.log("error man: ", err);
+        }
+    }
+
 
 
     const renderVideoElement = (videoToPlay) => {
@@ -37,6 +80,11 @@ const Profile = (props) => {
         setOpen(false);
     };
 
+    const connect = (e) => {
+        e.preventDefault();
+        console.log("clicked");
+
+    }
 
     return (
         <main className="margin-bottom">
@@ -69,7 +117,7 @@ const Profile = (props) => {
                 </div>
                 <div className="public-profile-column-right">
                   <div className="column-right-bottom">
-                    <button className="new-btn order-profile-btn">Request video</button>
+                    <button className="new-btn order-profile-btn" onClick={initSetup}>Request video</button>
                   </div>
                   <div className="">
                     <button className="new-btn share-btn" onClick={copyLink}>Share</button>

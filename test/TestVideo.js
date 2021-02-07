@@ -1,16 +1,15 @@
-const Video = artifacts.require("./Video.sol");
+const VideoContract = artifacts.require("./VideoContract.sol");
 
 
-contract("Video", accounts => {
-    it("should store the string 'Hey there!'", async () => {
-        const video = await Video.deployed();
+contract("VideoContract", accounts => {
+    it("Decide what's tested", async () => {
+        const video = await VideoContract.deployed();
 
-        // Set myString to "Hey there!"
-        await video.set("Hey there!", { from: accounts[0] });
+        await video.someFunction("Hey there!", { from: accounts[0] });
 
         // Get myString from public variable getter
-        const videoString = await myStringStore.myString.call();
+        const videoFunction = await VideoContract.someVariable.call();
 
-        assert.equal(videoString, "Hey there!", "The string was not stored");
+        assert.equal(videoFunction, "Hey there!", "The string was not stored");
     });
 });

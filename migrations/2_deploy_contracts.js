@@ -1,5 +1,5 @@
-const Video = artifacts.require("Video");
+const VideoContract = artifacts.require("VideoContract");
 
 module.exports = function(deployer) {
-    deployer.deploy(Video);
+    deployer.deploy(VideoContract);
 };
