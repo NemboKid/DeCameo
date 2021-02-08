@@ -11,7 +11,7 @@ const Profiles = () => {
         image: "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg",
         name: "Lars",
         description: "",
-        profession: "Developer",
+        profession: "Web Developer",
         price: 3
       },
       {
@@ -19,7 +19,7 @@ const Profiles = () => {
         image: "https://i.pinimg.com/564x/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg",
         name: "Peter",
         description: "hallå hallå där",
-        profession: "UI",
+        profession: "Blockchain",
         price: 5
       },
       {
@@ -27,7 +27,7 @@ const Profiles = () => {
         image: "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg",
         name: "Mike",
         description: "hallå hallå där",
-        profession: "UI",
+        profession: "CEO CompanyX",
         price: 5
       },
       {
