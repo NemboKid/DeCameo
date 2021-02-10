@@ -111,10 +111,10 @@ const Register = (props) => {
               </div>
               <span className="info-cont">
                 <p>
-                  Register a profile will store the data in <a href="etherscan.org/address/0x31234134" target="_blank">our smart contract</a> and will be public available on the Ethereum blockchain.
+                  Registering a profile will store the data in <a href="etherscan.org/address/0x31234134" target="_blank">our smart contract</a> and will be public available on the Ethereum blockchain.
                 </p>
               </span>
-              <button type="submit" className="button-standard button-form" disabled={`${!userData.name ? "true" : ""}`}>
+              <button type="submit" className="button-standard button-form" disabled={`${!userData.name ? true : ""}`}>
                 Register
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                   <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z"></path>

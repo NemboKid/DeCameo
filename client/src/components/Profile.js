@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, Link } from 'react-router-dom';
 import getWeb3 from "./../web3/getWeb3";
 import Connect from "./Connect";
 // import VideoContract from "./../contracts/VideoContract.json";
@@ -22,7 +22,7 @@ const Profile = (props) => {
     });
 
     useEffect(() => {
-        const {profile} = props.location.state;
+        const { profile } = props.location.state;
         setProfile(profile);
         initSetup();
     }, []);
@@ -114,6 +114,22 @@ const Profile = (props) => {
                           <p>{profile.price} ETH</p>
                         </div>
                       </div>
+                      <div className="settings-wrapper">
+                        <Link
+                          className="button-settings"
+                          to={{
+                            pathname: `/profile/${profile.id}/settings`,
+                            state: {
+                              profile: profile
+                            }
+                          }}>
+                          <div className="svg-container">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="svg-settings">
+                              <path d="M1.438 16.872l-1.438 7.128 7.127-1.438 12.642-12.64-5.69-5.69-12.641 12.64zm2.271 2.253l-.85-.849 11.141-11.125.849.849-11.14 11.125zm20.291-13.436l-2.817 2.819-5.69-5.691 2.816-2.817 5.691 5.689z"/>
+                            </svg>
+                          </div>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -123,6 +139,19 @@ const Profile = (props) => {
                   </div>
                   <div className="">
                     <button className="new-btn share-btn" onClick={copyLink}>Share</button>
+                  </div>
+                  <div className="">
+                      <Link
+                        to={{
+                          pathname: `/profile/${profile.id}/orders`,
+                          state: {
+                            profile: profile
+                          }
+                        }}>
+                        <button className="new-btn share-btn">
+                          Handle Orders
+                        </button>
+                      </Link>
                   </div>
                 </div>
               </div>

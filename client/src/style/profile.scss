@@ -542,3 +542,42 @@
     margin: 10%;
     font-size: 2.5em;
 }
+
+.settings-wrapper {
+    float: right;
+}
+
+//Settings btn
+.button-settings {
+    color: #fff;
+    cursor: pointer;
+    background-image: $theme-gradient !important;
+    border-radius: 3px;
+    box-shadow: 12px 12px 10px rgba(0,0,0,.08);
+    display: flex;
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    height: 32px;
+    width: 32px;
+    flex: 0 0 auto;
+    margin-left: 14px;
+    text-decoration: none;
+
+    &:hover {
+        background-image: $blue-gradient !important;
+    }
+
+    .svg-container {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+
+        .svg-settings {
+            height: 16px !important;
+            width: 16px !important;
+            fill: #fff;
+        }
+    }
+}

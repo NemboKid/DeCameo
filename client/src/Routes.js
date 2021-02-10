@@ -1,10 +1,11 @@
 import React, {Suspense} from "react";
 import { Switch, Router, Route, Redirect, useLocation, useHistory } from "react-router-dom";
 import Header from "./components/Header";
-import Product from "./components/Product";
 import Video from "./components/Video";
 import Spreads from "./components/Spreads";
 import Profile from "./components/Profile";
+import Settings from "./components/Settings";
+import Orders from "./components/Orders";
 import Home from "./components/Home";
 import About from "./components/About";
 import Register from "./components/Register";
@@ -22,10 +23,11 @@ function Routes() {
                   <RouteOpen exact path="/" component={Home} />
                   <RouteOpen exact path="/about" component={About} />
                   <RouteOpen exact path="/register" component={Register} />
-                  <RouteOpen exact path="/product" component={Product} />
                   <RouteOpen exact path="/spreads" component={Spreads} />
                   <RouteOpen exact path="/video" component={Video} />
                   <RouteOpen exact path="/profile/:id" component={Profile} />
+                  <RouteOpen exact path="/profile/:id/settings" component={Settings} />
+                  <RouteOpen exact path="/profile/:id/orders" component={Orders} />
               </Switch>
               <Footer />
             </>

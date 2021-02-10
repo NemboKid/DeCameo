@@ -1,0 +1,53 @@
+.settings-quit-btn {
+    display: inline;
+    position: inherit;
+    float: none;
+}
+
+// .cancel-btn {
+//     background-color: #ddd;
+//     background-image: none;
+//     margin-left: 1em;
+//
+//
+//     &:hover {
+//         background-color: #ccc;
+//     }
+// }
+
+.btn-wrapper {
+    display: block;
+    position: relative;
+    height: 80px;
+}
+
+.back-btn {
+    background-image: linear-gradient(to right, #f7229b, #f05a28);
+    color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 13px;
+    padding: 7px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    outline: none;
+    box-sizing: inherit;
+    float: left !important;
+    display: block;
+    position: relative;
+    margin-bottom: 2em;
+
+    &:hover {
+        background-image: linear-gradient(to right, #5faaf4, #2a80d6);
+        cursor: pointer;
+    }
+
+    svg {
+        height: 14px;
+        width: 14px;
+        fill: white;
+    }
+}
