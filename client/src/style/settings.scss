@@ -22,10 +22,11 @@
 }
 
 .back-btn {
-    background-image: linear-gradient(to right, #f7229b, #f05a28);
+    background-image: $blue-gradient;
     color: #fff;
     cursor: pointer;
-    border-radius: 2px;
+    border-radius: 14px;
+    min-width: 120px;
     border: none;
     font-size: 15px;
     font-weight: 600;
@@ -39,11 +40,7 @@
     display: block;
     position: relative;
     margin-bottom: 2em;
-
-    &:hover {
-        background-image: linear-gradient(to right, #5faaf4, #2a80d6);
-        cursor: pointer;
-    }
+    cursor: pointer;
 
     svg {
         height: 14px;

@@ -1,0 +1,39 @@
+.order-modal {
+    width: 70%;
+    background-color: #f0f0f0;
+    display: block;
+    position: absolute;
+    left: 15%;
+    top: 0;
+    z-index: 100;
+    padding: 5%;
+    border-radius: 12px;
+    box-shadow: $box-shadow;
+
+    .close-wrapper {
+        position: absolute;
+        top: 3%;
+        right: 3%;
+
+        .MuiSvgIcon-root {
+            cursor: pointer;
+        }
+    }
+
+    label {
+        // position: inherit !important;
+        float: inherit !important;
+        text-align: left;
+    }
+
+    .form-input-row {
+        // margin: 5em 0;
+        p {
+            text-align: left;
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+}

@@ -5,6 +5,7 @@
 @import '/home.scss';
 @import '/register.scss';
 @import '/profile.scss';
+@import '/orderModal.scss';
 @import '/settings.scss';
 @import '/footer.scss';
 
@@ -46,6 +47,10 @@ article {
     video {
         width: 80%;
     }
+}
+
+.hidden {
+    display: none;
 }
 
 .btn-standard {

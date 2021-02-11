@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory, Link } from 'react-router-dom';
-import getWeb3 from "./../web3/getWeb3";
-import Connect from "./Connect";
+// import getWeb3 from "./../web3/getWeb3";
+import OrderModal from "./OrderModal";
 // import VideoContract from "./../contracts/VideoContract.json";
 
 
-let VideoContract;
+// let VideoContract;
 
 const Profile = (props) => {
     let location = useLocation();
@@ -13,51 +13,14 @@ const Profile = (props) => {
     const [copySuccess, setCopySuccess] = useState('');
     const [loadSkeleton, setLoadSkeleton] = useState(false);
     const [open, setOpen] = useState(false);
-    const [profile, setProfile] = useState(null);
-    const [appState, setAppState] = useState({
-        contractString: "",
-        web3: {},
-        accounts: {},
-        contract: {},
-    });
+    const [orderModal, setOrderModal] = useState(false);
+    const [userData, setUserData] = useState(null);
+
 
     useEffect(() => {
         const { profile } = props.location.state;
-        setProfile(profile);
-        initSetup();
+        setUserData(profile);
     }, []);
-
-    const initSetup = async () => {
-        try {
-          // Get network provider and web3 instance.
-          const web3 = await getWeb3();
-          // console.log("get web3: ", web3);
-
-          // Use web3 to get the user's accounts.
-          const accounts = await web3.eth.getAccounts();
-
-          // Get the contract instance.
-          const networkId = await web3.eth.net.getId();
-          const deployedNetwork = await VideoContract.networks[networkId];
-
-          //load in the contract
-          const instance = await new web3.eth.Contract(
-            VideoContract.abi,
-            deployedNetwork && deployedNetwork.address //only if deployedNetwork exists
-          );
-          setAppState(prevState => {
-              return { ...prevState,
-                web3: web3,
-                accounts: accounts,
-                contract: instance
-              }
-          });
-          console.log("finished web3");
-        } catch (err) {
-            // Catch any errors for any of the above operations.
-            console.log("error man: ", err);
-        }
-    }
 
 
 
@@ -82,16 +45,14 @@ const Profile = (props) => {
         setOpen(false);
     };
 
-    const connect = (e) => {
-        e.preventDefault();
-        console.log("clicked");
-
-    }
 
     return (
         <main className="margin-bottom">
-          {profile !== null &&
+          {(userData !== null && props.appState) ?
             <>
+            {
+              orderModal && <OrderModal profile={userData} setOrderModal={setOrderModal} appState={props.appState} />
+            }
             <div className="page-header-alternative" />
             <article>
               <div className="public-profile-body">
@@ -100,27 +61,24 @@ const Profile = (props) => {
                   <div className="top-inner">
                     <div className="box-left">
                       <div className="img-wrapper">
-                        <img className="public-img" src={profile.image ? profile.image : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} alt={`Profile pic of ${profile.name}`} />
+                        <img className="public-img" src={userData[4] ? userData[4] : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} alt={`Profile pic of ${userData[5]}`} />
                       </div>
                     </div>
                     <div className="box-right">
                       <div className="line-detail"/>
                       <div className="info-wrapper-right">
                         <div className="row first-row">
-                          <h1>{profile.name}</h1>
-                          <p>{profile.profession}</p>
-                        </div>
-                        <div className="row first-row">
-                          <p>{profile.price} ETH</p>
+                          <h1>{userData[5]}</h1>
+                          <p>{userData[6]}</p>
                         </div>
                       </div>
                       <div className="settings-wrapper">
                         <Link
                           className="button-settings"
                           to={{
-                            pathname: `/profile/${profile.id}/settings`,
+                            pathname: `/profile/${userData[0]}/settings`,
                             state: {
-                              profile: profile
+                                profile: userData
                             }
                           }}>
                           <div className="svg-container">
@@ -135,7 +93,7 @@ const Profile = (props) => {
                 </div>
                 <div className="public-profile-column-right">
                   <div className="column-right-bottom">
-                    <button className="new-btn order-profile-btn" onClick={initSetup}>Request video</button>
+                    <button className="new-btn order-profile-btn" onClick={() => setOrderModal(true)}>Request video</button>
                   </div>
                   <div className="">
                     <button className="new-btn share-btn" onClick={copyLink}>Share</button>
@@ -143,9 +101,9 @@ const Profile = (props) => {
                   <div className="">
                       <Link
                         to={{
-                          pathname: `/profile/${profile.id}/orders`,
+                          pathname: `/profile/${userData[0]}/orders`,
                           state: {
-                            profile: profile
+                            profile: userData
                           }
                         }}>
                         <button className="new-btn share-btn">
@@ -155,9 +113,9 @@ const Profile = (props) => {
                   </div>
                 </div>
               </div>
-                <div className={`public-cont description ${!profile.description ? "hidden" : ""}`}>
+                <div className={`public-cont description ${!userData[3] ? "hidden" : ""}`}>
                   <div className="description-inner">
-                    <p>{profile.description}</p>
+                    <p>{userData[3]}</p>
                   </div>
                 </div>
                 <div className="public-cont information">
@@ -180,6 +138,8 @@ const Profile = (props) => {
               </div>
             </article>
             </>
+            :
+            <p>Loading...</p>
         }
         </main>
     );

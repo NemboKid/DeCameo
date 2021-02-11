@@ -3,11 +3,11 @@ import Top from "./home/Top";
 import Profiles from "./home/Profiles";
 import How from "./home/How";
 
-const Home = () => {
+const Home = (props) => {
     return (
         <div className="home-cont">
           <Top />
-          <Profiles />
+          <Profiles appState={props.appState}/>
           <How />
         </div>
     );

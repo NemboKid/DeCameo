@@ -1,6 +1,7 @@
 // Public profile page
 .public-profile-body {
     width: 80%;
+    height: 720px;
     margin: 2em auto;
 }
 
@@ -551,7 +552,7 @@
 .button-settings {
     color: #fff;
     cursor: pointer;
-    background-image: $theme-gradient !important;
+    background-image: $blue-gradient;
     border-radius: 3px;
     box-shadow: 12px 12px 10px rgba(0,0,0,.08);
     display: flex;
@@ -563,10 +564,6 @@
     flex: 0 0 auto;
     margin-left: 14px;
     text-decoration: none;
-
-    &:hover {
-        background-image: $blue-gradient !important;
-    }
 
     .svg-container {
         align-items: center;
