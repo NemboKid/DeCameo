@@ -16,6 +16,7 @@ contract VideoContract {
     //Logging events
     event UpdatedUser(uint id, address charity, string description, string title, string name, string image);
     event DeliverySent(uint id, address charity, uint amount, string video);
+    event OrderDeleted(uint id, uint amount, address donorAddress);
 
     constructor() public {
         owner = msg.sender;
@@ -165,7 +166,8 @@ contract VideoContract {
                 orders[_id].celebrity == msg.sender
                 , "Only the contract owner, the orderer and the registered profile and perform this action");
 
-        orders[_id].donor.transfer(orders[_id].donatedAmount);
+        payable(orders[_id].donor).transfer(orders[_id].donatedAmount);
+        emit OrderDeleted(_id, orders[_id].donatedAmount, orders[_id].donor);
         delete orders[_id];
         return true;
     }

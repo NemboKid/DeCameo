@@ -58,6 +58,15 @@ const HandleOrder = (props) => {
         }
     }
 
+    const deleteOrder = (e) => {
+        e.preventDefault();
+        props.appState.contract.methods.deleteOrder(order[0])
+        .send({ from: props.appState.account, gas: 3000000 })
+        .on("transactionHash", hash => {
+            window.alert("Order deleted and funds sent back to the address that placed the order.")
+        })
+    }
+
     return (
         <main className="margin-bottom">
           {loading ? <p>...Loading page</p>
@@ -93,6 +102,9 @@ const HandleOrder = (props) => {
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z"></path>
                   </svg>
+                </button>
+                <button type="submit" className="button-standard button-form back-btn delete-btn" disabled={order.status === "1" && true} onClick={deleteOrder}>
+                  Delete order
                 </button>
               </div>
             </article>

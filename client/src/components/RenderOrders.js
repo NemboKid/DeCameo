@@ -38,18 +38,19 @@ const RenderOrders = (props) => {
         const {order} = props;
 
         return (
-            <tr key={order.order_id}>
-              <td>{order[9]}</td>
+            <tr key={order.id}>
+              <td>{order.donatedAmount}</td>
               <td title={`${order.description.substring(0, 60)}...`}>{order.description.substring(0, 25)}...</td>
-              <td>{order[7] === "0" ? "Not delivered" : "Delivered"}</td>
+              <td>{order.status === "0" ? "Not delivered" : "Delivered"}</td>
               <td>
                 {
                 <Link
                   className="table-button"
                   to={{
-                    pathname: `/profile/${profile[0]}/order/${order[0]}`,
+                    pathname: `/profile/${profile.id}/order/${order[0]}`,
                     state: {
-                        order: order
+                        order: order,
+                        appState: props.appState
                     }
                   }}>
                   Handle Order
@@ -63,7 +64,7 @@ const RenderOrders = (props) => {
                   <Link
                     className="table-button"
                     to={{
-                      pathname: `/video/${order[0]}`,
+                      pathname: `/video/${order.id}`,
                       state: {
                           order: order
                       }
