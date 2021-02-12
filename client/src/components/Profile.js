@@ -18,6 +18,7 @@ const Profile = (props) => {
 
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const { profile } = props.location.state;
         setUserData(profile);
     }, []);
@@ -61,7 +62,7 @@ const Profile = (props) => {
                   <div className="top-inner">
                     <div className="box-left">
                       <div className="img-wrapper">
-                        <img className="public-img" src={userData.image ? `https://ipfs.infura.io/ipfs/${userData.image}` : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} alt={`Profile pic of ${userData[5]}`} />
+                        <img className="public-img" src={!userData.test ? (userData.image ? `https://ipfs.infura.io/ipfs/${userData.image}` : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png") : userData.image} alt={`Profile pic of ${userData.name}`} />
                       </div>
                     </div>
                     <div className="box-right">
@@ -94,9 +95,6 @@ const Profile = (props) => {
                 <div className="public-profile-column-right">
                   <div className="column-right-bottom">
                     <button className="new-btn order-profile-btn" onClick={() => setOrderModal(true)}>Request video</button>
-                  </div>
-                  <div className="">
-                    <button className="new-btn share-btn" onClick={copyLink}>Share</button>
                   </div>
                   <div className="">
                       <Link

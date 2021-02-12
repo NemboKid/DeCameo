@@ -290,11 +290,12 @@ textarea {
 .charity-wrapper {
     display: block;
     position: relative;
-    width: 85%;
+    width: 80% !important;
     margin: auto;
     background-image: $video2-gradient;
     box-shadow: $box-shadow;
     border-radius: $border-radius;
+    background-color: none !important;
     padding: 1em;
 
     h4 {

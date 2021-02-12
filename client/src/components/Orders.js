@@ -24,14 +24,18 @@ const Orders = (props) => {
         let count;
         let orderArr = [];
         if (props.appState.contract.methods) {
-            count = await props.appState.contract.methods.videoCount().call();
-            setVideoCount(count);
-            console.log("count:: ", count);
+            try {
+                count = await props.appState.contract.methods.videoCount().call();
+                setVideoCount(count);
+                console.log("count:: ", count);
+            } catch (err) {
+                console.log(err);
+            }
         }
         if (count > 0) {
             for (var i = 0; i <= count - 1; i++) {
                 const newOrder = await props.appState.contract.methods.orders(i).call();
-                if (newOrder.celebrity && newOrder.celebrity !== celeb[1]) {
+                if (newOrder.celebrity && newOrder.celebrity !== celeb.celebrity) {
                     return;
                 }
                 orderArr.push(newOrder);
@@ -39,6 +43,8 @@ const Orders = (props) => {
         }
         setOrders(orderArr);
     }
+
+    console.log(orders);
 
 
     return (
@@ -59,7 +65,7 @@ const Orders = (props) => {
                     <div className="top-inner">
                       <div className="box-left">
                         <div className="img-wrapper">
-                          <img className="public-img" src={profile.image ? `https://ipfs.infura.io/ipfs/${profile.image}` : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} alt={`Profile pic of ${profile.name}`} />
+                          <img className="public-img" src={!profile.test ? (profile.image ? `https://ipfs.infura.io/ipfs/${profile.image}` : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png") : profile.image} alt={`Profile pic of ${profile.name}`} />
                         </div>
                       </div>
                       <div className="box-right">

@@ -12,6 +12,7 @@ const Profiles = (props) => {
         name: "Lars",
         description: "jasså du din jävel",
         title: "Web Developer",
+        test: true
       },
       {
         id: 1,
@@ -19,6 +20,7 @@ const Profiles = (props) => {
         name: "Peter",
         description: "hallå hallå där",
         title: "Blockchain",
+        test: true
       },
       {
         id: 2,
@@ -26,6 +28,7 @@ const Profiles = (props) => {
         name: "Mike",
         description: "hallå hallå där",
         title: "CEO CompanyX",
+        test: true
       },
       {
         id: 3,
@@ -33,6 +36,7 @@ const Profiles = (props) => {
         name: "Fred",
         description: "hallå hallå där",
         title: "UX",
+        test: true
       },
       {
         id: 4,
@@ -40,6 +44,7 @@ const Profiles = (props) => {
         name: "Sam",
         description: "hallå hallå där",
         title: "Accountant",
+        test: true
       },
       {
         id: 5,
@@ -47,6 +52,7 @@ const Profiles = (props) => {
         name: "Mike",
         description: "hallå hallå där",
         title: "UI",
+        test: true
       },
       {
         id: 6,
@@ -54,6 +60,7 @@ const Profiles = (props) => {
         name: "Sven",
         description: "hallå hallå där",
         title: "HODLer",
+        test: true
       },
     ]);
     const [celebs, setCelebs] = useState([]);

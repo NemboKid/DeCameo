@@ -17,7 +17,7 @@ const Register = (props) => {
         charity: "Select address"
     });
     const [profile, setProfile] = useState(null);
-    var charityList = ["Select address", "0x5ecaD2fEff2BC75CbdC5Fc1Cd43FdF9dE020dacc", "0xFBf1723fe3bf4a40F7454385A1dBd47DB3CC99A3", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAd2b5"];
+    var charityList = ["Select address", "0x5ecaD2fEff2BC75CbdC5Fc1Cd43FdF9dE020dacc", "0xFBf1723fe3bf4a40F7454385A1dBd47DB3CC99A3", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAd2b5", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAdT45"];
     const charityDetails = [
         {},
         {
@@ -133,7 +133,7 @@ const Register = (props) => {
                   {charities}
                 </select>
               </div>
-              <div className="charity-wrapper">
+              <div className={`charity-wrapper ${userData.charity === "Select address" ? "hidden" : null}`}>
                 <h4>Charity details</h4>
                 <p><small>Name:</small> {charityDetails[charityList.indexOf(userData.charity)].name}</p>
                 <p><small>Description:</small> {charityDetails[charityList.indexOf(userData.charity)].description}</p>

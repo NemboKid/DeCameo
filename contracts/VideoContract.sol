@@ -34,7 +34,7 @@ contract VideoContract {
     //video array to store all video orders
     enum VideoStatus { New, Done }
 
-    uint videoCount = 0;
+    uint public videoCount = 0;
     uint public celebCount = 0;
 
     struct Video {

@@ -56,7 +56,8 @@ const OrderModal = (props) => {
         })
         .on("transactionHash", hash => {
             console.log("hash: ", hash);
-            setLoading(false);
+            window.alert("Order successfully sent!")
+            // setLoading(false);
         })
     }
 
@@ -81,13 +82,13 @@ const OrderModal = (props) => {
                 <form onSubmit={orderVideo}>
                   <div className="form-input-row">
                     <label>Charity org address (<a target="_blank" href={`https://etherscan.io/address/${orderData.charity}`}>Check on Etherscan</a>)</label>
-                    <input type="text" value={orderData.charity} name="amount" placeholder="Amount" onChange={handleChange} disabled />
+                    <input type="text" value={orderData.charity} name="amount" required onChange={handleChange} disabled />
                   </div>
                   <div className="form-input-row">
                     <label>Amount to donate</label>
                     <input autoFocus type="text" required min="1" value={orderData.amount} name="amount" placeholder="Amount" onChange={handleChange} />
                   </div>
-                  <p style={{textAlign: "left"}}>It this video to someone else?</p>
+                  <p className="toggle-p">It this video to someone else?</p>
                   <div className="toggle-option">
                     <FormGroup row>
                      <FormControlLabel
