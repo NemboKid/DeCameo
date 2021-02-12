@@ -18,53 +18,44 @@ const Register = (props) => {
     });
     const [profile, setProfile] = useState(null);
     var charityList = ["Select address", "0x5ecaD2fEff2BC75CbdC5Fc1Cd43FdF9dE020dacc", "0xFBf1723fe3bf4a40F7454385A1dBd47DB3CC99A3", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAd2b5"];
+    const charityDetails = [
+        {},
+        {
+          name: "Water in India",
+          description: "ljsahflkasjlfkjaköf lkajsfksamf"
+        },
+        {
+          name: "Food in Bronx",
+          description: "fsgsfg sfghfsgsfgh dfsdsf"
+        },
+        {
+          name: "Save the Rainforests in Amazon",
+          description: "dfhdfhfd dsfadda asfasfasfh"
+        },
+        {
+          name: "Sidewalks for the icebears in Sweden",
+          description: "ölkskgörytrey gfjfgjerwdcv. köljsöfwe öäladfögwå"
+        }
+    ]
     //const charities = charityList.map(x => (<option key={x} value={x}>{x}</option>));
     const charities = charityList.map(x => (<option key={x} value={x} disabled={x === "Select address" ? true : false}>{x}</option>));
     const [textLength, setTextLength] = useState(0);
     const [file, setFile] = useState("");
     const [filename, setFilename] = useState("");
     const [loading, setLoading] = useState(false);
-    // const [appState, setAppState] = useState({
-    //     web3: {},
-    //     account: "",
-    //     contract: {}
-    // });
-
-    // useEffect(() => {
-    //     initSetup();
-    // }, []);
-
-
 
     const registerUser = async (e) => {
         e.preventDefault();
-        setLoading("loading: ", true);
         console.log("address: ", props.appState.account);
         props.appState.contract.methods.registerCelebrity(userData.charity, userData.description, userData.title, userData.name, userData.image)
         .send({ from: props.appState.account, gas: 3000000 })
         .on("transactionHash", hash => {
             console.log("hash: ", hash);
-            setLoading(false);
+            cleanUserData();
+            window.alert("Profile created!")
         })
-
-        //await cleanUserData();
         window.scrollTo(0, 0);
     };
-
-
-    // const loadWeb3 = async () => {
-    //     if (window.ethereum) {
-    //         window.web3 = new Web3(window.ethereum);
-    //         await window.ethereum.enable();
-    //     }
-    //     else if (window.web3) {
-    //         window.web3 = new Web3(window.web3.currentProvider);
-    //     }
-    //     else {
-    //         window.alert('No Ethereum browser found. Download the plugin MetaMask for example');
-    //     }
-    // }
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -133,15 +124,19 @@ const Register = (props) => {
                 <input autoFocus type="text" required min="2" value={userData.name} name="name" placeholder="Vitalik Buterin" onChange={handleChange} />
               </div>
               <div className="form-input-row">
-                <label>Title
+                <label>Title</label>
                 <input type="text" required value={userData.title} name="title" placeholder="BUIDLer" onChange={handleChange} />
-                </label>
               </div>
               <div className="form-input-row">
                 <label>Charity address</label>
                 <select name="charity" value={userData.charity} onChange={handleChange}>
                   {charities}
                 </select>
+              </div>
+              <div className="charity-wrapper">
+                <h4>Charity details</h4>
+                <p><small>Name:</small> {charityDetails[charityList.indexOf(userData.charity)].name}</p>
+                <p><small>Description:</small> {charityDetails[charityList.indexOf(userData.charity)].description}</p>
               </div>
               <div className="form-input-row">
                 <label>Presentation text ({textLength}/150)</label>

@@ -51,6 +51,10 @@
     }
 }
 
+.form-input-row {
+    padding: 0 2em;
+}
+
 
 
 .form-input-row {
@@ -281,4 +285,26 @@ textarea {
     width: 95% !important;
     margin: 0 !important;
     float: left !important
+}
+
+.charity-wrapper {
+    display: block;
+    position: relative;
+    width: 85%;
+    margin: auto;
+    background-image: $video2-gradient;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius;
+    padding: 1em;
+
+    h4 {
+        margin: 0;
+    }
+
+    p {
+        text-align: left;
+    }
+    small {
+        color: $gray-font;
+    }
 }
