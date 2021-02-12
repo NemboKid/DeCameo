@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory, Link } from 'react-router-dom';
-// import getWeb3 from "./../web3/getWeb3";
 import OrderModal from "./OrderModal";
-// import VideoContract from "./../contracts/VideoContract.json";
 
-
-// let VideoContract;
 
 const Profile = (props) => {
     let location = useLocation();
@@ -15,6 +11,26 @@ const Profile = (props) => {
     const [open, setOpen] = useState(false);
     const [orderModal, setOrderModal] = useState(false);
     const [userData, setUserData] = useState(null);
+    var charityList = ["Select address", "0x5ecaD2fEff2BC75CbdC5Fc1Cd43FdF9dE020dacc", "0xFBf1723fe3bf4a40F7454385A1dBd47DB3CC99A3", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAd2b5", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAdT45"];
+    const charityDetails = [
+        {},
+        {
+          name: "Water in India",
+          description: "ljsahflkasjlfkjaköf lkajsfksamf"
+        },
+        {
+          name: "Food in Bronx",
+          description: "fsgsfg sfghfsgsfgh dfsdsf"
+        },
+        {
+          name: "Save the Rainforests in Amazon",
+          description: "dfhdfhfd dsfadda asfasfasfh"
+        },
+        {
+          name: "Better sidewalks for the icebears in Sweden",
+          description: "ölkskgörytrey gfjfgjerwdcv. köljsöfwe öäladfögwå"
+        }
+    ]
 
 
     useEffect(() => {
@@ -113,7 +129,12 @@ const Profile = (props) => {
               </div>
                 <div className={`public-cont description ${!userData[3] ? "hidden" : ""}`}>
                   <div className="description-inner">
-                    <p>{userData[3]}</p>
+                    <p>{userData.description}</p>
+                  </div>
+                  <div className={`charity-wrapper ${userData.charity === "Select address" ? "hidden" : null}`}>
+                    <h4>Charity details (<a target="_blank" href={`https://etherscan.io/address/${userData.charity}`}>Etherscan</a>)</h4>
+                    <p><small>Name:</small> {charityDetails[charityList.indexOf(userData.charity)].name} ({userData.charity})</p>
+                    <p><small>Description:</small> {charityDetails[charityList.indexOf(userData.charity)].description}</p>
                   </div>
                 </div>
                 <div className="public-cont information">

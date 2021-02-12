@@ -166,7 +166,9 @@ contract VideoContract {
                 orders[_id].celebrity == msg.sender
                 , "Only the contract owner, the orderer and the registered profile and perform this action");
 
-        payable(orders[_id].donor).transfer(orders[_id].donatedAmount);
+        //convert wei to ether
+        uint withdraw = orders[_id].donatedAmount * 1000000000000000000;
+        payable(orders[_id].donor).transfer(withdraw);
         emit OrderDeleted(_id, orders[_id].donatedAmount, orders[_id].donor);
         delete orders[_id];
         return true;

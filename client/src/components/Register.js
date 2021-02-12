@@ -33,7 +33,7 @@ const Register = (props) => {
           description: "dfhdfhfd dsfadda asfasfasfh"
         },
         {
-          name: "Sidewalks for the icebears in Sweden",
+          name: "Better sidewalks for the icebears in Sweden",
           description: "ölkskgörytrey gfjfgjerwdcv. köljsöfwe öäladfögwå"
         }
     ]
@@ -142,13 +142,9 @@ const Register = (props) => {
                 <label>Presentation text ({textLength}/150)</label>
                 <textarea maxLength="150" name="description" onChange={handleChange} value={userData.description} placeholder="Tell people who you are and what they can expect" />
               </div>
-              {/* <div className="form-input-row">
-                <label>Twitter handle (for notifications)</label>
-                <input type="text" name="twitter" value={userData.twitter} placeholder="VitalikButerin" onChange={handleChange} />
-              </div> */}
               <span className="info-cont">
                 <p>
-                  Registering a profile will store the data in <a href="etherscan.org/address/0x31234134" target="_blank">our smart contract</a> and will be public available on the Ethereum blockchain.
+                  Registering a profile will store the data in <a href="ropsten.etherscan.org/address/0xCa848d39908191db6e3518A20A80C89970671d33" target="_blank">our smart contract</a> and will be public available on the Ethereum blockchain.
                 </p>
               </span>
               <button type="submit" className="button-standard button-form" disabled={userData.name ? false : true}>

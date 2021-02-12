@@ -53,7 +53,7 @@ const HandleOrder = (props) => {
             ipfs.add(videoState.buffer)
             .then(res => {
                 console.log("ipfs RES: ", res);
-                setVideo(res.path)
+                setVideo(res.path);
             });
         }
     }
@@ -64,6 +64,19 @@ const HandleOrder = (props) => {
         .send({ from: props.appState.account, gas: 3000000 })
         .on("transactionHash", hash => {
             window.alert("Order deleted and funds sent back to the address that placed the order.")
+        })
+    }
+
+    const sendOrder = (e) => {
+        e.preventDefault();
+        if (video.length < 2) {
+            window.alert("Did you upload a video?");
+            return;
+        }
+        props.appState.contract.methods.sendOrder(order[0], video)
+        .send({ from: props.appState.account, gas: 3000000 })
+        .on("transactionHash", hash => {
+            window.alert("Order was sent and money transfered to the charity address of your choice")
         })
     }
 
@@ -97,7 +110,7 @@ const HandleOrder = (props) => {
                     <source src={video && `https://ipfs.infura.io/ipfs/${video}`} type="video/mp4" />
                   </video>
                 </div>
-                <button type="submit" className="button-standard button-form" disabled={order.status === "1" && true}>
+                <button type="submit" className="button-standard button-form" disabled={order.status === "1" && true} onClick={sendOrder}>
                   Send Video
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z"></path>

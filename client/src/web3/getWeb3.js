@@ -6,9 +6,7 @@ const getWeb3 = async () => {
         window.addEventListener("load", async () => {
             // Modern dapp browsers...
             if (window.ethereum) {
-                console.log("window.ethereum");
                 const web3 = new Web3(window.ethereum);
-                console.log("web3::: ", web3);
                 try {
                     // Request account access if needed
                     await window.ethereum.enable();
@@ -28,7 +26,7 @@ const getWeb3 = async () => {
             }
             // Fallback to localhost
             else {
-                const provider = new Web3.providers.HttpProvider("http://127.0.0.1:8545");
+                const provider = new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/58537a43761d41b09c87dd9e07bc6acf");
                 const web3 = new Web3(provider);
                 console.log("No web3 instance injected, using Local web3.");
                 resolve(web3);

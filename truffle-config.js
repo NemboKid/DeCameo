@@ -1,4 +1,7 @@
+require('dotenv').config();
 const path = require("path");
+const HDWalletProvider = require("truffle-hdwallet-provider");
+const MNEMONIC = process.env.SEED;
 
 module.exports = {
     contracts_build_directory: path.join(__dirname, "client/src/contracts"),
@@ -8,7 +11,23 @@ module.exports = {
             port: "8545",
             network_id: "*",
             gas: 6721975
-        }
+        },
+        ropsten: {
+          provider: () => new HDWalletProvider(MNEMONIC, "https://ropsten.infura.io/v3/58537a43761d41b09c87dd9e07bc6acf"),
+          network_id: 3,       // Ropsten's id
+          //gas: 5500000,        // Ropsten has a lower block limit than mainnet
+          //confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+          //timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+          //skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+        },
+        // rinkeby: {
+        //    provider: function() {
+        //       return new HDWalletProvider(MNEMONIC, `https://rinkeby.infura.io/v3/${process.env.API_KEY}`);
+        //    },
+        //    network_id: 4,
+        //    gas: 5500000,
+        //    // timeoutBlocks: 200
+        // }
     },
     compilers: {
         solc: {
@@ -88,14 +107,14 @@ module.exports = {
 //
 //     // Useful for deploying to a public network.
 //     // NB: It's important to wrap the provider as a function.
-//     // ropsten: {
-//       // provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
-//       // network_id: 3,       // Ropsten's id
-//       // gas: 5500000,        // Ropsten has a lower block limit than mainnet
-//       // confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-//       // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-//       // skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
-//     // },
+    // ropsten: {
+    //   provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/YOUR-PROJECT-ID`),
+    //   network_id: 3,       // Ropsten's id
+    //   gas: 5500000,        // Ropsten has a lower block limit than mainnet
+    //   confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+    //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+    //   skipDryRun: true     // Skip dry run before migrations? (default: false for public nets )
+    // },
 //
 //     // Useful for private networks
 //     // private: {
