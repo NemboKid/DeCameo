@@ -67,7 +67,12 @@ const Profiles = (props) => {
     const [celebCount, setCelebCount] = useState(null);
 
     useEffect(() => {
-        getProfiles();
+        try {
+            getProfiles();
+        } catch (err) {
+            console.log(err);
+            history.push("/");
+        }
     }, [props.appState.contract.methods]);
 
     const getProfiles = async () => {

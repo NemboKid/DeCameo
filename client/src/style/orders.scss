@@ -1,0 +1,25 @@
+.order-table {
+    margin: auto;
+    width: 70%;
+}
+
+.orders-body {
+    width: 100%;
+
+    .info-wrapper-right {
+        padding-top: 0 !important;
+    }
+
+    .first-row h1 {
+        margin-top: 0;
+    }
+
+    .settings-wrapper {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 80px;
+        height: 80px;
+        z-index: 100;
+    }
+}

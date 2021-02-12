@@ -2,7 +2,6 @@ import React, {Suspense, useState, useEffect} from "react";
 import { Switch, Router, Route, Redirect, useLocation, useHistory } from "react-router-dom";
 import Header from "./components/Header";
 import Video from "./components/Video";
-import Spreads from "./components/Spreads";
 import Profile from "./components/Profile";
 import Settings from "./components/Settings";
 import Orders from "./components/Orders";
@@ -34,7 +33,6 @@ function Routes() {
 
           // Use web3 to get the user's accounts.
           const accounts = await web3.eth.getAccounts();
-          console.log("account: ", accounts);
 
           // Get the contract instance.
           const networkId = await web3.eth.net.getId();
@@ -67,8 +65,7 @@ function Routes() {
               <RouteOpen exact path="/" component={Home} appState={appState} />
               <RouteOpen exact path="/about" component={About} />
               <RouteOpen exact path="/register" component={Register} appState={appState} />
-              <RouteOpen exact path="/spreads" component={Spreads} />
-              <RouteOpen exact path="/video" component={Video} />
+              <RouteOpen exact path="/video/:id" component={Video} appState={appState} />
               <RouteOpen exact path="/profile/:id" component={Profile} appState={appState}/>
               <RouteOpen exact path="/profile/:id/settings" component={Settings} appState={appState}/>
               <RouteOpen exact path="/profile/:id/orders" component={Orders} appState={appState}/>

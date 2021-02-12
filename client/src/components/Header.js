@@ -28,11 +28,6 @@ const Header = (props) => {
                       className="nav-link">About</NavLink>
                     <NavLink
                       exact
-                      to="/video"
-                      activeClassName="nav-link-active"
-                      className="nav-link">Video</NavLink>
-                    <NavLink
-                      exact
                       to="/register"
                       activeClassName="nav-link-active"
                       className="nav-link nav-login">Register</NavLink>

@@ -123,15 +123,15 @@ const Profile = (props) => {
                   <div className="information-inner">
                     <span>
                       <i className="far fa-check-circle fa-3x small-icon" alt="small icon describing putting an order"/>
-                      <p>Request a video</p>
+                      <p>Request a video and decide amount to donate</p>
                     </span>
                     <span>
                       <i className="far fa-clock fa-3x small-icon" alt="small icon describing a clock"/>
-                      <p>Cancel order and withdraw money anytime</p>
+                      <p>Wait for your order to arrive and pay upon delivery</p>
                     </span>
                     <span>
                       <i className="fas fa-sync fa-3x small-icon" alt="small icon describing an exchange"/>
-                      <p>Cancel order and withdraw money anytime</p>
+                      <p>Cancel order and withdraw money at anytime</p>
                     </span>
                   </div>
                 </div>

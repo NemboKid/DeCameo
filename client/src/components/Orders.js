@@ -45,11 +45,17 @@ const Orders = (props) => {
         <main className="margin-bottom">
           {profile !== null &&
             <>
-              <div className="page-header-alternative" />
               <article>
-                <div className="public-profile-body">
+                <div className="public-profile-body orders-body">
                   <div className="top-cont">
                   <div className="public-profile-top">
+                    <div className="settings-wrapper btn-wrapper">
+                      <button onClick={() => history.goBack()} className="back-btn settings-quit-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                          <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
+                        </svg>
+                      </button>
+                    </div>
                     <div className="top-inner">
                       <div className="box-left">
                         <div className="img-wrapper">
@@ -62,13 +68,6 @@ const Orders = (props) => {
                           <div className="row first-row">
                             <h1>Orders of {profile.name}</h1>
                           </div>
-                        </div>
-                        <div className="settings-wrapper btn-wrapper">
-                          <button onClick={() => history.goBack()} className="back-btn settings-quit-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                              <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path>
-                            </svg>
-                          </button>
                         </div>
                       </div>
                     </div>

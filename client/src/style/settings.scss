@@ -1,8 +1,80 @@
-.settings-quit-btn {
-    display: inline;
-    position: inherit;
-    float: none;
+.settings-body {
+    display: block;
+    position: relative;
+    max-height: 450px;
+    margin-bottom: 0;
 }
+
+.button-wrapper-settings {
+    display: block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 2em;
+    width: 50%;
+    margin: 0 auto 3em auto;
+
+    .button-standard {
+        text-align: center;
+        margin: auto;
+        width: 50%;
+    }
+}
+
+.settings-top {
+    width: 75% !important;
+    height: auto;
+    display: block;
+    position: relative;
+
+    .btn-wrapper {
+        height: 80px;
+        display: block;
+        position: absolute;
+        height: 80px;
+        right: 0;
+        top: 0;
+        z-index: 100;
+        width: 80px;
+    }
+
+    .info-wrapper-right {
+        padding-top: 0 !important;
+
+        .first-row {
+            h1 {
+                margin-top: 0;
+            }
+        }
+    }
+
+    .top-inner {
+        justify-content: space-evenly;
+
+        .box-left {
+            width: 40%;
+
+            .img-wrapper {
+                margin: auto;
+            }
+
+            .upload-btn {
+                width: inherit;
+            }
+        }
+
+        .form-input-row {
+            overflow: inherit;
+        }
+    }
+
+    .settings-quit-btn {
+        display: inline;
+        position: inherit;
+        float: none;
+    }
+}
+
+
 
 // .cancel-btn {
 //     background-color: #ddd;
@@ -15,18 +87,10 @@
 //     }
 // }
 
-.btn-wrapper {
-    display: block;
-    position: relative;
-    height: 80px;
-}
-
 .back-btn {
-    background-image: $blue-gradient;
+    background-image: $red-gradient;
     color: #fff;
     cursor: pointer;
-    border-radius: 14px;
-    min-width: 120px;
     border: none;
     font-size: 15px;
     font-weight: 600;
@@ -40,7 +104,6 @@
     display: block;
     position: relative;
     margin-bottom: 2em;
-    cursor: pointer;
 
     svg {
         height: 14px;

@@ -47,13 +47,31 @@ const RenderOrders = (props) => {
                 <Link
                   className="table-button"
                   to={{
-                    pathname: `/profile/${profile[0]}/order/${order.[0]}`,
+                    pathname: `/profile/${profile[0]}/order/${order[0]}`,
                     state: {
                         order: order
                     }
                   }}>
                   Handle Order
                 </Link>
+                }
+              </td>
+              <td>
+                {
+                  order.status === "1"
+                  ?
+                  <Link
+                    className="table-button"
+                    to={{
+                      pathname: `/video/${order[0]}`,
+                      state: {
+                          order: order
+                      }
+                    }}>
+                    Order Link
+                  </Link>
+                  :
+                  "Not available"
                 }
               </td>
             </tr>
@@ -74,6 +92,7 @@ const RenderOrders = (props) => {
                   <th>Description</th>
                   <th>Status</th>
                   <th>Action</th>
+                  <th>Link</th>
                 </>
             </tr>
           </thead>
