@@ -59,7 +59,7 @@ const Orders = (props) => {
                     <div className="top-inner">
                       <div className="box-left">
                         <div className="img-wrapper">
-                          <img className="public-img" src={profile.image ? profile.image : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} alt={`Profile pic of ${profile.name}`} />
+                          <img className="public-img" src={profile.image ? `https://ipfs.infura.io/ipfs/${profile.image}` : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} alt={`Profile pic of ${profile.name}`} />
                         </div>
                       </div>
                       <div className="box-right">

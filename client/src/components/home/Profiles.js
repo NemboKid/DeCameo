@@ -5,62 +5,55 @@ import { Link, useHistory } from "react-router-dom";
 //"How it works" in Home Component
 const Profiles = (props) => {
     const history = useHistory();
-    const [profiles, setProfiles] = useState([
+    const [fakeProfiles, setProfiles] = useState([
       {
-        id: "charles",
+        id: 0,
         image: "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg",
         name: "Lars",
         description: "jasså du din jävel",
-        profession: "Web Developer",
-        price: 3
+        title: "Web Developer",
       },
       {
-        id: "peter",
+        id: 1,
         image: "https://i.pinimg.com/564x/d9/56/9b/d9569bbed4393e2ceb1af7ba64fdf86a.jpg",
         name: "Peter",
         description: "hallå hallå där",
-        profession: "Blockchain",
-        price: 5
+        title: "Blockchain",
       },
       {
-        id: "mikey",
+        id: 2,
         image: "https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51405259-stock-illustration-male-avatar-profile-picture-use.jpg",
         name: "Mike",
         description: "hallå hallå där",
-        profession: "CEO CompanyX",
-        price: 5
+        title: "CEO CompanyX",
       },
       {
-        id: "mikey",
+        id: 3,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoX6lhTZKutDXlSB0r6828aCbXuxj91BgHUg&usqp=CAU",
-        name: "Mike",
+        name: "Fred",
         description: "hallå hallå där",
-        profession: "UI",
-        price: 5
+        title: "UX",
       },
       {
-        id: "mikey",
+        id: 4,
         image: "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg",
-        name: "Mike",
+        name: "Sam",
         description: "hallå hallå där",
-        profession: "UI",
-        price: 5
+        title: "Accountant",
       },
       {
-        id: "mikey",
+        id: 5,
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoX6lhTZKutDXlSB0r6828aCbXuxj91BgHUg&usqp=CAU",
         name: "Mike",
         description: "hallå hallå där",
-        profession: "UI",
-        price: 5
+        title: "UI",
       },
       {
-        id: "mikey",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoX6lhTZKutDXlSB0r6828aCbXuxj91BgHUg&usqp=CAU",
-        name: "Mike",
+        id: 6,
+        image: "https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg",
+        name: "Sven",
         description: "hallå hallå där",
-        profession: "UI",
-        price: 5
+        title: "HODLer",
       },
     ]);
     const [celebs, setCelebs] = useState([]);
@@ -92,6 +85,8 @@ const Profiles = (props) => {
                 console.log(newCeleb);
                 profiles.push(newCeleb);
             }
+        } else {
+            profiles = fakeProfiles;
         }
         console.log("profiles: ", profiles);
         setCelebs(profiles);
@@ -108,21 +103,21 @@ const Profiles = (props) => {
                 className="profile-cont"
                 onClick={() => {
                     history.push({
-                        pathname: `profile/${profile[0]}`,
+                        pathname: `profile/${profile.id}`,
                         state: {
                             profile: profile,
                         }}
                     )}
                   }>
                   <div className="img-wrapper">
-                    <img className="profile-img" alt="pic chosen by profile" src={profile.image[4] ? profile.image[4] : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} />
+                    <img className="profile-img" alt="pic chosen by profile" src={celebCount > 0 ? (profile.image ? `https://ipfs.infura.io/ipfs/${profile.image}` : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png") : profile.image} />
                     <div className="new-profile-bottom-label">
                       <div className="bottom-label-inner">
                         <span className="first-row">
-                          <p>{profile[5]}</p>
+                          <p>{profile.name}</p>
                         </span>
                         <span className="second-row">
-                          <p>{profile[6]}</p>
+                          <p>{profile.title}</p>
                         </span>
                       </div>
                     </div>

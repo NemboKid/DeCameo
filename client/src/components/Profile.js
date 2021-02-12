@@ -61,15 +61,15 @@ const Profile = (props) => {
                   <div className="top-inner">
                     <div className="box-left">
                       <div className="img-wrapper">
-                        <img className="public-img" src={userData[4] ? userData[4] : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} alt={`Profile pic of ${userData[5]}`} />
+                        <img className="public-img" src={userData.image ? `https://ipfs.infura.io/ipfs/${userData.image}` : "https://cdn1.iconfinder.com/data/icons/random-115/24/person-512.png"} alt={`Profile pic of ${userData[5]}`} />
                       </div>
                     </div>
                     <div className="box-right">
                       <div className="line-detail"/>
                       <div className="info-wrapper-right">
                         <div className="row first-row">
-                          <h1>{userData[5]}</h1>
-                          <p>{userData[6]}</p>
+                          <h1>{userData.name}</h1>
+                          <p>{userData.title}</p>
                         </div>
                       </div>
                       <div className="settings-wrapper">
