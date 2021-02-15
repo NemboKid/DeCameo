@@ -18,13 +18,13 @@
     color: #fff;
 }
 
-    .true {
-        background-color: $green-color;
-    }
+  .false {
+      background-color: red;
+  }
 
-    .false {
-        background-color: $red-color;
-    }
+  .true {
+      background-color: green;
+  }
 
     .undefined {
         display: none !important;

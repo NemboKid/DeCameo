@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import getWeb3 from "./../web3/getWeb3";
-import VideoContract from "./../contracts/VideoContract.json";
+import charityDetails from "./charities";
 
 const ipfsClient = require('ipfs-http-client')
 const ipfs = ipfsClient({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' })
@@ -17,28 +16,9 @@ const Register = (props) => {
         charity: "Select address"
     });
     const [profile, setProfile] = useState(null);
-    var charityList = ["Select address", "0x5ecaD2fEff2BC75CbdC5Fc1Cd43FdF9dE020dacc", "0xFBf1723fe3bf4a40F7454385A1dBd47DB3CC99A3", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAd2b5", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAdT45"];
-    const charityDetails = [
-        {},
-        {
-          name: "Water in India",
-          description: "ljsahflkasjlfkjaköf lkajsfksamf"
-        },
-        {
-          name: "Food in Bronx",
-          description: "fsgsfg sfghfsgsfgh dfsdsf"
-        },
-        {
-          name: "Save the Rainforests in Amazon",
-          description: "dfhdfhfd dsfadda asfasfasfh"
-        },
-        {
-          name: "Better sidewalks for the icebears in Sweden",
-          description: "ölkskgörytrey gfjfgjerwdcv. köljsöfwe öäladfögwå"
-        }
-    ]
+    //var charityList = ["Select address", "0xC7e797350Bb6bD64d4274C3DBf3f9F6c6E67081b", "0xBeaB4c6024104A1156A5ebaE223d421072529591", "0x17462F7D6607902AC20E0Aa375e0Ccd0C2c1a34C", "0x8B713a128ca9662b9eCeFe98c7E23c9015686ACa"];
     //const charities = charityList.map(x => (<option key={x} value={x}>{x}</option>));
-    const charities = charityList.map(x => (<option key={x} value={x} disabled={x === "Select address" ? true : false}>{x}</option>));
+    const charities = charityDetails.charities.map(x => (<option key={x.id} value={x.id} disabled={x.name === "Select address" ? true : false}>{x.name}</option>));
     const [textLength, setTextLength] = useState(0);
     const [file, setFile] = useState("");
     const [filename, setFilename] = useState("");
@@ -135,8 +115,9 @@ const Register = (props) => {
               </div>
               <div className={`charity-wrapper ${userData.charity === "Select address" ? "hidden" : null}`}>
                 <h4>Charity details</h4>
-                <p><small>Name:</small> {charityDetails[charityList.indexOf(userData.charity)].name}</p>
-                <p><small>Description:</small> {charityDetails[charityList.indexOf(userData.charity)].description}</p>
+                <p><small>Address:</small> {userData.charity !== "Select address" && charityDetails.charities[Number(userData.charity)].address}</p>
+                <p><small>Name:</small> {userData.charity !== "Select address" && charityDetails.charities[Number(userData.charity)].name}</p>
+                <p><small>Description:</small> {userData.charity !== "Select address" && charityDetails.charities[Number(userData.charity)].description}</p>
               </div>
               <div className="form-input-row">
                 <label>Presentation text ({textLength}/150)</label>
@@ -144,7 +125,7 @@ const Register = (props) => {
               </div>
               <span className="info-cont">
                 <p>
-                  Registering a profile will store the data in <a href="ropsten.etherscan.org/address/0xCa848d39908191db6e3518A20A80C89970671d33" target="_blank">our smart contract</a> and will be public available on the Ethereum blockchain.
+                  Registering a profile will store the data in <a href="https://ropsten.etherscan.io/address/0xCa848d39908191db6e3518A20A80C89970671d33" target="_blank">our smart contract</a> and will be public available on the Ethereum blockchain.
                 </p>
               </span>
               <button type="submit" className="button-standard button-form" disabled={userData.name ? false : true}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useHistory, Link } from 'react-router-dom';
 import OrderModal from "./OrderModal";
+import charityDetails from "./charities";
 
 
 const Profile = (props) => {
@@ -12,33 +13,16 @@ const Profile = (props) => {
     const [orderModal, setOrderModal] = useState(false);
     const [userData, setUserData] = useState(null);
     var charityList = ["Select address", "0x5ecaD2fEff2BC75CbdC5Fc1Cd43FdF9dE020dacc", "0xFBf1723fe3bf4a40F7454385A1dBd47DB3CC99A3", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAd2b5", "0x896a0f3304ac4ba90aF7c0BEffB7F4e57AfAdT45"];
-    const charityDetails = [
-        {},
-        {
-          name: "Water in India",
-          description: "ljsahflkasjlfkjaköf lkajsfksamf"
-        },
-        {
-          name: "Food in Bronx",
-          description: "fsgsfg sfghfsgsfgh dfsdsf"
-        },
-        {
-          name: "Save the Rainforests in Amazon",
-          description: "dfhdfhfd dsfadda asfasfasfh"
-        },
-        {
-          name: "Better sidewalks for the icebears in Sweden",
-          description: "ölkskgörytrey gfjfgjerwdcv. köljsöfwe öäladfögwå"
-        }
-    ]
 
 
     useEffect(() => {
         window.scrollTo(0, 0);
         const { profile } = props.location.state;
+        console.log(profile);
         setUserData(profile);
     }, []);
 
+    // console.log(charityDetails.charities[charityList.indexOf(userData.charity)].name);
 
 
     const renderVideoElement = (videoToPlay) => {
@@ -65,7 +49,7 @@ const Profile = (props) => {
 
     return (
         <main className="margin-bottom">
-          {(userData !== null && props.appState) ?
+          {(userData && props.appState) ?
             <>
             {
               orderModal && <OrderModal profile={userData} setOrderModal={setOrderModal} appState={props.appState} />
@@ -127,14 +111,15 @@ const Profile = (props) => {
                   </div>
                 </div>
               </div>
-                <div className={`public-cont description ${!userData[3] ? "hidden" : ""}`}>
+                <div className={`public-cont description ${!userData.description ? "hidden" : ""}`}>
                   <div className="description-inner">
                     <p>{userData.description}</p>
                   </div>
-                  <div className={`charity-wrapper ${userData.charity === "Select address" ? "hidden" : null}`}>
-                    <h4>Charity details (<a target="_blank" href={`https://etherscan.io/address/${userData.charity}`}>Etherscan</a>)</h4>
-                    <p><small>Name:</small> {charityDetails[charityList.indexOf(userData.charity)].name} ({userData.charity})</p>
-                    <p><small>Description:</small> {charityDetails[charityList.indexOf(userData.charity)].description}</p>
+                  <div className={`charity-wrapper`}>
+                    <h4>Charity details (<a target="_blank" href={`https://etherscan.io/address/${charityDetails.charities[userData.charity].address}`}>Etherscan</a>)</h4>
+                    <p><small>Address:</small> {charityDetails.charities[userData.charity].address}</p>
+                    <p><small>Name:</small> {charityDetails.charities[userData.charity].name}</p>
+                    <p><small>Description:</small> {charityDetails.charities[userData.charity].description}</p>
                   </div>
                 </div>
                 <div className="public-cont information">
