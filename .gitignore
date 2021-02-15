@@ -15,6 +15,7 @@ client/.eslintcache
 
 # production
 /build
+/oldContracts
 
 # trading bot
 /bot
