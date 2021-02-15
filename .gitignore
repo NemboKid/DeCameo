@@ -8,6 +8,7 @@
 
 # often fucks up git checkout
 client/.eslintcache
+.eslintcache
 
 # testing
 /coverage
