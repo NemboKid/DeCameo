@@ -12,6 +12,7 @@ const Profiles = (props) => {
         name: "Lars",
         description: "jasså du din jävel",
         title: "Web Developer",
+        charity: "0xC7e797350Bb6bD64d4274C3DBf3f9F6c6E67081b",
         test: true
       },
       {
@@ -20,6 +21,7 @@ const Profiles = (props) => {
         name: "Peter",
         description: "hallå hallå där",
         title: "Blockchain",
+        charity: "0xC7e797350Bb6bD64d4274C3DBf3f9F6c6E67081b",
         test: true
       },
       {
@@ -28,6 +30,7 @@ const Profiles = (props) => {
         name: "Mike",
         description: "hallå hallå där",
         title: "CEO CompanyX",
+        charity: 2,
         test: true
       },
       {
@@ -36,6 +39,7 @@ const Profiles = (props) => {
         name: "Fred",
         description: "hallå hallå där",
         title: "UX",
+        charity: 1,
         test: true
       },
       {
@@ -44,6 +48,7 @@ const Profiles = (props) => {
         name: "Sam",
         description: "hallå hallå där",
         title: "Accountant",
+        charity: 3,
         test: true
       },
       {
@@ -52,6 +57,7 @@ const Profiles = (props) => {
         name: "Mike",
         description: "hallå hallå där",
         title: "UI",
+        charity: 1,
         test: true
       },
       {
@@ -60,6 +66,7 @@ const Profiles = (props) => {
         name: "Sven",
         description: "hallå hallå där",
         title: "HODLer",
+        charity: 4,
         test: true
       },
     ]);

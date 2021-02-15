@@ -6,6 +6,7 @@
 /.pnp
 .pnp.js
 
+# often fucks up git checkout
 client/.eslintcache
 .eslintcache
 

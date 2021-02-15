@@ -1,0 +1,34 @@
+{
+    "charities": [
+        {
+          "id": "Select address",
+          "address": "",
+          "name": "Select address",
+          "description": ""
+        },
+        {
+          "id": 1,
+          "address": "0xC7e797350Bb6bD64d4274C3DBf3f9F6c6E67081b",
+          "name": "Water in India",
+          "description": "ljsahflkasjlfkjaköf lkajsfksamf"
+        },
+        {
+          "id": 2,
+          "address": "0xBeaB4c6024104A1156A5ebaE223d421072529591",
+          "name": "Food in Bronx",
+          "description": "fsgsfg sfghfsgsfgh dfsdsf"
+        },
+        {
+          "id": 3,
+          "address": "0x17462F7D6607902AC20E0Aa375e0Ccd0C2c1a34C",
+          "name": "Save the Rainforests in Amazon",
+          "description": "dfhdfhfd dsfadda asfasfasfh"
+        },
+        {
+          "id": 4,
+          "address": "0x8B713a128ca9662b9eCeFe98c7E23c9015686ACa",
+          "name": "Better sidewalks for the icebears in Sweden",
+          "description": "ölkskgörytrey gfjfgjerwdcv. köljsöfwe öäladfögwå"
+        }
+    ]
+}
