@@ -1,7 +1,7 @@
 const VideoContract = artifacts.require("./VideoContract.sol");
 
 
-contract("VideoContract", accounts => {
+contract("VideoContract", ([owner, account1, account2, account3, account4, account5]) => {
     var instance;
 
     beforeEach(async () => {
@@ -10,23 +10,23 @@ contract("VideoContract", accounts => {
 
     it('Contract deployer becomes owner', async () => {
         const isOwner = await instance.owner.call();
-        const isDeployer = await accounts[0];
+        const isDeployer = await owner;
 
         assert.equal(isOwner, isDeployer, "they should be the same")
     });
 
     it('Register celebrity', async () => {
         await instance.registerCelebrity("0x99388CFdb089485A570ED463E8491a57D2Fae0e0", "Hej och hopp", "BUIDLer", "Larsa", "test2.png", {
-            from: accounts[1]
+            from: account1
         });
         await instance.registerCelebrity("0x17462F7D6607902AC20E0Aa375e0Ccd0C2c1a34C", "Tjennnna", "CTO", "Fille", "t12af.jpeg", {
-            from: accounts[2]
+            from: account2
         });
 
         var celebCount = await instance.celebCount();
         const { words } = celebCount;
-        console.info("celebCount: ", words[0]);
-        assert.equal(words[0], 2, "celebCount should be 2");
+        console.info("celebCount: ", words.toString());
+        assert.equal(words.toString(), 2, "celebCount should be 2");
     });
 
     it("Get name from celebrity", async () => {
@@ -36,12 +36,12 @@ contract("VideoContract", accounts => {
     })
 
     it("Make orders", async () => {
-        await instance.orderVideo(accounts[1], "0x99388CFdb089485A570ED463E8491a57D2Fae0e0", "I wanna hear a joke", "Sune", "Sten", 4, {
-            from: accounts[3],
+        await instance.orderVideo(account1, "0x99388CFdb089485A570ED463E8491a57D2Fae0e0", "I wanna hear a joke", "Sune", "Sten", 4, {
+            from: account3,
             value: 4000000000000000000
         });
-        await instance.orderVideo(accounts[2], "0x17462F7D6607902AC20E0Aa375e0Ccd0C2c1a34C", "Say something fun", "Gary", "Barry", 1, {
-            from: accounts[4],
+        await instance.orderVideo(account2, "0x17462F7D6607902AC20E0Aa375e0Ccd0C2c1a34C", "Say something fun", "Gary", "Barry", 1, {
+            from: account4,
             value: 1000000000000000000
         });
 
@@ -51,18 +51,18 @@ contract("VideoContract", accounts => {
     });
 
     it("Delete order", async () => {
-        const balanceBefore = await web3.eth.getBalance(accounts[5]);
+        const balanceBefore = await web3.eth.getBalance(account5);
 
-        const receipt1 = await instance.orderVideo(accounts[2], "0x17462F7D6607902AC20E0Aa375e0Ccd0C2c1a34C", "Say something fun", "Larra", "Karsten", 2, {
-            from: accounts[5],
+        const receipt1 = await instance.orderVideo(account2, "0x17462F7D6607902AC20E0Aa375e0Ccd0C2c1a34C", "Say something fun", "Larra", "Karsten", 2, {
+            from: account5,
             value: 2000000000000000000
         });
 
         //after order
-        const balanceOrder = await web3.eth.getBalance(accounts[5]);
+        const balanceOrder = await web3.eth.getBalance(account5);
         console.log("balance after order: ", balanceOrder);
 
-        const receipt2 = await instance.deleteOrder(2, { from: accounts[5] });
+        const receipt2 = await instance.deleteOrder(2, { from: account5 });
 
         const gasUsed1 = receipt1.receipt.gasUsed;
         const gasUsed2 = receipt2.receipt.gasUsed
@@ -75,7 +75,7 @@ contract("VideoContract", accounts => {
         const totalGas = (gasPrice1 * gasUsed1) + (gasPrice2 * gasUsed2);
 
         //adjust also for gas cost
-        var balanceAfter = await web3.eth.getBalance(accounts[5]);
+        var balanceAfter = await web3.eth.getBalance(account5);
         console.log("Balance after: ", balanceAfter);
         //balanceAdjusted = balanceAfter - totalGas;
         console.info("Balance before: ", balanceBefore);
@@ -92,7 +92,7 @@ contract("VideoContract", accounts => {
         const charityBalanceBefore = await web3.eth.getBalance("0x99388CFdb089485A570ED463E8491a57D2Fae0e0");
 
         const receipt = await instance.sendOrder(0, "ipfsrandomhash", {
-            from: accounts[1]
+            from: account1
         });
         //console.log("Receipt: ", receipt);
 

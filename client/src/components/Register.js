@@ -26,8 +26,9 @@ const Register = (props) => {
 
     const registerUser = async (e) => {
         e.preventDefault();
+        var charityAddress = charityDetails.charities[Number(userData.charity)].address;
         console.log("address: ", props.appState.account);
-        props.appState.contract.methods.registerCelebrity(userData.charity, userData.description, userData.title, userData.name, userData.image)
+        props.appState.contract.methods.registerCelebrity(charityAddress, userData.description, userData.title, userData.name, userData.image)
         .send({ from: props.appState.account, gas: 3000000 })
         .on("transactionHash", hash => {
             console.log("hash: ", hash);
