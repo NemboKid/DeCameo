@@ -13,7 +13,7 @@ const getWeb3 = async () => {
                     // Acccounts now exposed
                     resolve(web3);
                 } catch (err) {
-                    console.log("error m888: ", err);
+                    console.log("error: ", err);
                     reject(err);
                 }
             }
